@@ -1,4 +1,4 @@
-# Git
+# Git command
 ## ブランチを一時的に過去のコミットに戻す
 - git checkout <commit name>
 - 最新の状態に戻す
