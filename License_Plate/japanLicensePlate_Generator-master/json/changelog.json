@@ -1,0 +1,79 @@
+[
+	{
+		"update": "09 April 2021",
+		"version": "1.1",
+		"build": "b042021"
+	},
+	{
+		"date": "04 March 2021",
+		"change": "Initial Launch"
+	},
+	{
+		"date": "",
+		"change": "Change: New render method."
+	},
+	{
+		"date": "",
+		"change": "Fix: Some region not showing up."
+	},
+	{
+		"date": "05 March 2021",
+		"change": "Add: Opengraph thumbnail and info."
+	},
+	{
+		"date": "12 March 2021",
+		"change": "SITE CURRENTLY NOT WORKING! Need new plate render method."
+	},
+	{
+		"date": "",
+		"change": "Fix: Update plate render method."
+	},
+	{
+		"date": "19 March 2021",
+		"change": "Height map currently disable"
+	},
+	{
+		"date": "20 March 2021",
+		"change": "Working on new website layout"
+	},
+	{
+		"date": "23 March 2021",
+		"change": "Add: Mobile layout added"
+	},
+	{
+		"date": "27 March 2021",
+		"change": "Add: Implement normal map generation"
+	},
+	{
+		"date": "04 April 2021",
+		"change": "Add: Implement new download method"
+	},
+	{
+		"date": "05 April 2021",
+		"change": "New layout launch"
+	},
+	{
+		"date": "",
+		"change": "Update: Terms agreement."
+	},
+	{
+		"date": "",
+		"change": "Add: Google Translate for dirty translation of the web."
+	},
+	{
+		"date": "06 April 2021",
+		"change": "Add: Terms agreement before rendering."
+	},
+	{
+		"date": "",
+		"change": "Add: Missing hiragana"
+	},
+	{
+		"date": "",
+		"change": "Add: Rental and US Army Personel Hiragana"
+	},
+	{
+		"date": "09 April 2021",
+		"change": "Fix: Wrong hiragana list"
+	}
+]
