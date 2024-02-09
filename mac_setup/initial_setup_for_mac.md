@@ -1,0 +1,21 @@
+# 入社までにやっておくこと
+- [ ] init.vim -> luaで書く　目的：プラグイン設定の整理
+- [ ] neovimでpython, jsのデバッグができるようにしておく　目的：開発環境の整備
+- [ ] slackのメモをgithubにアップロード 目的：slackの解約
+# macの初期設定でやること
+- [ ] キーボード設定
+  - [ ] 日本語英語変換コマンドの確認
+  - [ ] 入力速度を早める
+- [ ] スクリーンセーバー
+  - [ ] 常時点灯にしておく
+- [ ] what I need to install and setup for develop -> see udemy(Mr. Sakai's lecture), dev env([install repo](https://github.com/akihiro-coder/setup_dev_env)) and so on.
+  - [ ] brew -> [install homebrew](https://qiita.com/zaburo/items/29fe23c1ceb6056109fd)
+  - [ ] neovim -> [install neovim](https://qiita.com/arie0703/items/030554862851db9c519d)
+  - [ ] vim-plug -> [install vim-plug](https://qiita.com/arie0703/items/030554862851db9c519d#%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%83%9E%E3%83%8D%E3%83%BC%E3%82%B8%E3%83%A3%E3%82%92%E5%85%A5%E3%82%8C%E3%82%8B)
+  - [ ] coc extentions -> use coc-install command, install coc-jedi(python), coc-tsserver(js, ts), coc-html, coc-css and so on.
+  - [ ] check shell is zsh. -> echo $SHELL
+  - [ ] init.vim -> [init.vim of frontier machine](https://github.com/akihiro-coder/vimrc/tree/frontier)
+  - [ ] fzf (fuzzy finder) -> デフォルトでfussy finder的なことができるか確認して出来ないなら、brew install fzf ([install fzf](https://yiskw713.hatenablog.com/entry/2022/01/12/200000))
+  - [ ] python virtualenv, pyenv (see slack's memo)
+  - [ ] tmux (see udemy)
+  - [ ] zsh関連のターミナルをきれいにするやつ(frontierマシンを参照)
