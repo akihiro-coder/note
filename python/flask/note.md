@@ -51,8 +51,8 @@ def index():
 ```
 ## Usage of 'for' and 'if' in html file
 - 完成図
-<img src="./example_using_for_if.png">
-- コード
+- <img src="./example_using_for_if.png">
+- code
 ```html
 {% extends "base.html" %}
 
