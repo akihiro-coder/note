@@ -1,2 +1,9 @@
-# Knowledge-required-for-the-job
-仕事で必要になった知識
+# まとめる予定の内容
+- python
+- flask
+- html, css
+- javascript
+- git
+- docker
+- aws
+
