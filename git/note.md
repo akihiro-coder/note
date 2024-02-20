@@ -3,7 +3,20 @@
 2. リポジトリはsshでクローンし直す
 3. 編集内容をpushする
 
-# command
+
+# wget ~~~.zipの罠
+- git cloneではなく、wget ~~~.zip && unzip ~~~.zipでリポジトリをローカルに落としてくる
+- 当たり前だが、この方法でリポジトリを持ってくると、gitコマンドが使えないから、注意が必要になる
+- [車色検出デモ](https://github.com/openvinotoolkit/openvino/blob/master/docs/dev/build_linux.md)
+```sh
+git clone https://github.com/openvinotoolkit/openvino.git
+cd openvino
+git submodule update --init --recursive
+```
+- zipファイルで持ってくると、最後のsubmoduleコマンドが効かない
+- これで30分ほど失った
+
+# git Commands
 - チームメンバーが開発中のリモートブランチ(origin/hoge)をローカルに持ってくる方法
 ```zsh
 " リモート追跡ブランチを最新にする
@@ -64,6 +77,19 @@ git stash pop stash@{number}
 ```sh
 git checkout <file path>
 ```
+- 特定のファイルの変更を取り消す(ステージング前のファイル)
+```sh
+git checkout @ filename
+```
+- 複数のファイルの変更を取り消す(ステージング前のファイル)
+```sh
+git checkout @ filename1 filename2
+```
+- 全てのファイルの変更を取り消す(ステージング前のファイル)
+```sh
+git reset -hard @
+```
+- [ステージング前の変更を取り消す（@の意味なども書いてある）](https://prograshi.com/general/git/cancel-changes-before-stage/)
 
 - clone後にmainブランチ以外のブランチにチェックアウトする
 ```sh
@@ -75,4 +101,43 @@ git checkout -b <develop> origin/develop
 ```sh
 git fetch
 git diff origin/a origin/b
+```
+
+
+- すでにgit管理下にあるファイルやディレクトリをgit管理対象から外す
+    - [git管理下にあるファイルやディレクトリを管理対象から外す](https://kleinblog.net/git-ignore.html)
+```sh
+git rm --cached filename (ファイルを外す)
+
+git rm --cached directoryname (ディレクトリを外す)
+```
+
+
+- コミットの取り消し
+    - [git resetでどのオプションを指定するべきか、シチュエーション別に分けてみる](https://qiita.com/kmagai/items/6b4bfe3fddb00769aec4)
+    - [コミットの取り消し、打ち消し、上書き](https://qiita.com/shuntaro_tamura/items/06281261d893acf049ed)
+```sh
+HEAD^    直前のコミットを意味する
+HEAD~{n} n個前のコミットを意味する
+
+git reset --soft HEAD^  直前のコミットを取り消し、ステージングを残る
+git reset --mixed HEAD^ 直前のコミットを取り消し、ステージングを取り消し、ワークディレクトリは残る
+git reset --hard HEAD^  直前のコミットを取り消し、ステージングを取り消し、ワークディレクトリを取り消す
+```
+
+
+- ブランチ間の差分のとり方
+```sh
+git diff branchA branchB
+```
+
+- 直前にステージングしたファイルのステージングの取り消し
+```sh
+git reset --mixed HEAD filename
+```
+
+- ローカルのブランチを削除する
+    - ちなみに、削除対象のブランチにいながら削除することは出来ないため、削除対象ブランチ以外のブランチにチェックアウトしてから、削除対象のブランチを削除すること。
+```sh
+git branch -d branchname
 ```
