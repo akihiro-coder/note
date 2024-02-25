@@ -342,7 +342,105 @@ export { dog1, dog2 };
 // script.js
 // 複数の値をインポートできる
 import { dog1, dog2 } from './dog';
-
 ```
 
 
+# ターミナルからの入力
+```javascript
+import readlineSync from "readline-sync";
+const name = readlineSync.question('insert your name:');
+const age = readlineSync.questionInt('isnert your age:');
+console.log(`inserted ${name}`);
+console.log(`inserted ${age}`);
+```
+
+# 配列操作
+## push: 配列の最後に新しい要素を追加するメソッド
+```javascript
+const array = [1, 2, 3];
+array.push(4);
+console.log(array);
+```
+
+## forEach: 配列の中から要素を１つずつ取り出して、全ての要素に繰り返し同じ処理を行うメソッド
+```javascript
+// Usage
+const nums = [1,2,3];
+// array.forEach((引数) => {処理});  関数の引数として定義された関数をコールバック関数と呼ぶ
+nums.forEach((num) => {console.log(nums);});
+```
+
+## find: 条件式に合う１つ目の要素を配列の中から取り出すメソッド　
+- 配列要素がオブジェクトの場合にも使用できる -> 要は、配列に使用できるということ
+```javascript
+const numbers = [1,3,5,7];
+const foundNumber = numbers.find((number) => {
+    return number > 3;
+});
+console.log(foundNumber); // 5
+```
+
+## filter: 条件式に合う全ての要素を配列の中から取り出して新しい配列を作るメソッド
+- 配列要素がオブジェクトの場合にも使用できる -> 要は、配列に使用できるということ
+```javascript
+const numbers = [1,3,5,7];
+const foundNumber = numbers.filter((number) => {
+    return number > 3;
+});
+console.log(foundNumber); // [5, 7]
+
+// オブジェクト配列に対しては以下のように使う
+const items = [
+    {name: 'kunai', price: 10},
+    {name: 'shuriken', price: 20},
+    {name: 'kibakufuda', price: 30}
+];
+const filteredItems = items.filter((item) => {
+    return item.price >= 20:
+});
+console.log(filteredItems); // [{name: 'shuriken', price: 20}, {name: 'kibakufuda', price: 30}]
+```
+
+
+## map: 配列内の全ての要素に処理を行い、その戻り値から新しい配列を作成するメソッド
+- 配列要素がオブジェクトの場合にも使用できる -> 要は、配列に使用できるということ
+```javascript
+const numbers = [1,2,3];
+const doubleNumbers = numbers.map((number) => {
+    return number * 2;
+});
+console.log(doubleNumbers); // [2.4.6]
+```
+
+
+
+# コールバック関数
+- ある他の関数に引数として渡される関数をコールバック関数と呼ぶ
+```javascript
+const printWanko = () => {
+    console.log('わんわん');
+};
+
+const call = (callback) => {
+    console.log('コールバック関数を呼び出す');
+    callback(); // コールバック関数を呼び出すときは()をつける
+};
+
+call(printWanko); // わんわん // コールバック関数を渡すときは()をつけない
+
+// 引数で関数を定義することもできる
+call(() => {
+    console.log('わんわん');
+}); // わんわん
+```
+
+- コールバック関数では、普通の関数と同じように引数を渡すことができる
+```javascript
+const call = (callback) => {
+    callback('わんわん');
+};
+
+call((voice) => {
+    console.log(voice);
+}); // わんわん
+```
