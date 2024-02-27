@@ -135,6 +135,7 @@ $('p').css('color', 'red');
 ## hoverイベント
 - 要素にマウスが乗った時や外れた時に指定した処理を行うイベント
 - hoverメソッドは２つの引数が有ることに注意
+- （例）あるdivタグのhoverイベントを適用したい場合の書き方
 ```javascript
 $('div').hover(
     function() {
@@ -144,4 +145,65 @@ $('div').hover(
         // マウスを外した時の処理　
     }
 );
+```
+
+## jQueryファイルの読み込み
+- jQueryは.js形式のファイルにコードを書く
+- <script>はcssファイルの読み込みのように<head>タグの中にも書けるが、</body>タグの直前に書くことで、webページの表示速度をより早めることができる
+<img src="./image/import_jqueryFile.png">
+- jqueryのコードは以下のように書く。
+```javascript
+$(function(){
+    // この中にjQueryのコードを書く
+});
+```
+
+
+## モーダルの表示非表示
+### モーダルにする
+1. モーダルをcssで非表示にする　
+2. ログインボタンにclickイベントを設定
+3. clickイベントでモーダルを表示
+```css
+.login-modal-wrapper {
+    display: none;
+}
+```
+```javascript
+$('#login-show').click(function() {
+    $('#login-modal').fadeIn();
+});
+```
+
+## addClass
+- addClassメソッドを用いると、指定した要素にクラスを追加することができる
+```html
+<p class="text-contents"></p>
+```
+```javascript
+$('.text-contents').addClass('text-active');
+```
+
+## removeClass
+- removeClassメソッドを用いると、指定した要素から指定したクラスを取り除くことができる
+- 下の例は、text-contentsクラスについた要素から、text-activeというクラスを取り除いている
+```html
+<p class="text-contents text-active"></p>
+```
+```javascript
+$('.text-contents').removeClass('text-active');
+```
+
+## this, findの使い方（復習）
+- textクラスのクリックイベントを作成し、その中で、textクラス内のanswerクラスを変数化し、answerがopenというクラスを持っていれば、removeClassメソッドを用いて、answerからopenを取り除く。
+<img src="./image/open_close_if.png">
+```javascript
+$('.text').click(function(){
+    var $answer = $(this).find('.answer')
+    if ($answer.hasClass('open')){
+        $answer.removeClass('open');
+    }else{
+        $answer.addClass('open');
+    }
+});
 ```
