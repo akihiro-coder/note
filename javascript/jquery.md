@@ -414,6 +414,7 @@ var fontSize = $('h1').css('font-size'); // 28px
 
 ## attrメソッド
 - HTMLの属性を取得、設定ができる
+- 第一引数に属性名(href, idなど), 第二引数に属性値をいれる
 
 ```html
 <h1>こんにちは</h1>
@@ -426,4 +427,135 @@ $('h1').attr('id', 'title');
 
 // 属性値を取得する場合
 $('a').attr('href'); // https://prog-8.com
+```
+
+
+
+## inputタグの入力値
+```html
+<form>
+    <div>名前:</div>
+    <input id="name" type="text">
+</form>
+```
+
+```javascript
+var name = $('#name').val(); // 入力欄に入力された値がはいる
+$('#name').val('Akihiro'); // 入力欄に文字列をセットすることもできる
+```
+
+## submitイベント　
+- フォームが送信された時のイベントとして、submitイベントがある。
+- submitイベントを用いると、送信ボタンをクリックされたときだけでなく、Enterキーでフォームが送信された場合もイベントが発生する。
+
+```javascript
+$('form').submit(function(){
+    // フォームの値を取得
+});
+```
+
+
+## セレクトボックスの入力値
+- selectタグを用いると選択肢式のセレクトボックスを作ることができる
+- selectタグとoptionタグからなり、書くoptionタグが選択肢になる
+- inputタグと同様に、valメソッドで選択中の値を取得できる
+<img src="./image/input_selectBox.png">
+
+
+## セレクトボックスの自動入力
+- selectタグもvalメソッドを用いて自動で選択させることができる
+- 先程のinputタグとの違いは、selectタグの場合、選択肢が限定されてしまうこと
+- optionタグのvalue属性に合致する値をvalメソッドの引数に指定する 
+<img src="./image/input_automatically_to_selectBox.png">
+
+
+## カスタムデータ属性
+- 属性は自分で作ることができ、これをカスタムデータ属性という。
+- 「data-」から始まる属性名を自由に設定できる。
+- **data属性は何らかの情報をHTML内に指定しておくのに便利なため、jqueryではよく使われる。**
+<img src='./image/custom_data_attribute.png'>
+
+
+
+
+## アニメーションをつける animateメソッド　
+
+```javascript
+// 第一引数に、変更するプロパティと変更後の値
+// 第二引数に、アニメーションのミリ秒
+$('h1').animate({'font-size': '50px'}, 1000);
+```
+
+
+## ページ内リンク
+- ブログなどの縦に長いページでは、「トップに戻る」といった名前でページの最上部に戻れるボタンが設置されていることがある
+### aタグでのページ内リンク
+- リンクの飛び先にidを指定し、<a>タグのhref属性に"#id名"とすると、<a>タグをクリックすると、そのidの要素が表示されている場所まで移動することことができる。
+
+```html
+<!-- hrefの値を、"#+id名"とする。 -->
+<a href="#contact">
+</a>
+<div id="contact">
+</div>
+```
+
+### scrollTopメソッドによるページ内リンク
+- $('html, body').scrollTop(値); のように指定し、ページ最上部から値pxの位置に移動することができる
+- **通常、scrollTopは$('html, body')に対して用いるため、セットで覚えておく**
+```javascript
+$('#top-btn').click(function(){
+    $('html, body').scrollTop(0); // スクロールされている部分の距離が0 = ページの最上部
+});
+```
+
+## スクロールにアニメーションをつけてみる
+```javascript
+$('html, body').animate(
+    {'scrollTop': 0}, // 変更するプロパティ、値
+    'slow' // アニメーションの速さ
+);
+```
+
+
+## ページ内ナビゲーションを作る
+### offsetメソッド
+- 要素の表示位置を取得できる
+- 下図の右のように、ページの上端からの距離とページの左端からの距離が連想配列の形で返す
+- offset().topとすると、ページの上端からの距離を取得できる
+<img src="./image/offset_method.png">
+
+
+### attrメソッドで飛び先を取得する
+<img src="./image/get_position_to_move_by_attrMethod.png">
+
+
+```html
+<header>
+...
+    <ul class="header-menu-right">
+         <li>
+           <a href="#stamps">LINEスタンプ</a>
+         </li>
+         <li>
+           <a href="#interview">インタビュー</a>
+         </li>
+         <li>
+           <a href="#contact">お問い合わせ</a>
+         </li>
+    </ul>
+...
+```
+
+```javascript
+$('header a').click(function(){
+    // クリックしたaタグのhref属性の値を取得する
+    var id = $(this).attr('href');
+
+    // 取得したhref属性の位置を取得する
+    var position = $(id).offset().top;
+
+    // 移動する(ここではアニメーションをつける)
+    $('html, body').animate({'scrollTop': position}, 500);
+});
 ```
